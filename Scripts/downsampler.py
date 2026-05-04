@@ -15,10 +15,18 @@ factor = 2
 os.makedirs(output_folder, exist_ok=True)
 
 for filename in os.listdir(input_folder):
-    if filename.endswith((".jpg", ".jpeg", ".png")):
+    if filename.lower().endswith((".jpg", ".jpeg", ".png")):
         img = cv2.imread(os.path.join(input_folder, filename))
 
-        h, w = img.shape[:2]
-        small = cv2.resize(img, (w // factor, h // factor))
+        # Error handler
+        if img is None:
+            print("Couldn't Read Image")
 
-        cv2.imwrite(os.path.join(output_folder, filename), small)
+        # Downsample
+        h, w = img.shape[:2]
+        small = cv2.resize(img, (w // factor, h // factor), interpolation=cv2.INTER_AREA)
+
+        # Upsample
+        degraded = cv2.resize(small, (w, h), interpolation=cv2.INTER_LINEAR)
+
+        cv2.imwrite(os.path.join(output_folder, filename), degraded)

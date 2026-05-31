@@ -1,1 +1,22 @@
-venv
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Local model files / generated model exports
+Models/
+*.pt
+*.onnx
+*.engine
+*.pth
+*.weights
+
+# Output videos and inference runs
+Runs/
+runs/
+
+# Local test videos
+Videos/
+
+# Misc
+.DS_Store

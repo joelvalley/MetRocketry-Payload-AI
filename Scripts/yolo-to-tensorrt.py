@@ -11,7 +11,7 @@ from ultralytics import YOLO
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
-model_path = PROJECT_ROOT / "Models" / "Object Detection" / "yolov8s" / "2. 100 Epochs 640x640" / "best.pt"
+model_path = PROJECT_ROOT / "Models" / "Combined Segmentation" / "yolov8s" / "1. 100 Epochs 640x640" / "best.pt"
 
 # Load a model
 model = YOLO(model_path)
@@ -20,6 +20,6 @@ model = YOLO(model_path)
 model.export(
     format="engine",
     imgsz=640,
-    half=True,
+    half=False,
     device=0
 )

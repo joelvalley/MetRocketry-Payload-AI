@@ -3,20 +3,9 @@ venv/
 __pycache__/
 *.pyc
 
-# Local model files / generated model exports
-Models/
-*.pt
-*.onnx
-*.engine
-*.pth
-*.weights
-
-# Output videos and inference runs
+# Output videos / inference results
 Runs/
 runs/
-
-# Local test videos
 Videos/
 
-# Misc
-.DS_Store
+# Do NOT ignore models because we want to push them
